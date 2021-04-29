@@ -1,3 +1,4 @@
+<% if cart.size > 0 %>
 <section class="cart-show">
 
   <header class="page-header">
@@ -50,3 +51,9 @@
   </div>
 
 </section>
+
+<% else %>
+<section class ="cart-show alert alert-danger" role="alert">
+<h3>Looks pretty empty here! You can find all of our exciting items <%= link_to 'here', :root %>! </h3>
+</section>
+<% end %>
