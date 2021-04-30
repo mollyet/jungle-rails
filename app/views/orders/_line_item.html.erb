@@ -1,0 +1,11 @@
+<tbody>
+      <% @line_items.each do |item| %>
+      <tr>
+        <td><img src="<%= item.product.image %>" alt="<%= item.product.name %>" width =82 height=100></td>
+        <td><%= item.product.name %></td>
+        <td><%= item.product.description %></td>
+        <td><%= item.quantity %></td>
+        <td> <%=humanized_money_with_symbol item.total_price_cents / 100.00 %></td>
+        </tr>
+        <% end %>
+      </tbody>
