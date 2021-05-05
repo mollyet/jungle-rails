@@ -1,0 +1,10 @@
+<h2> Create Account! </h2>
+
+<%= form_for :user, url: '/users' do |form| %>
+Name: <%= form.text_field :name %>
+Email: <%= form.text_field :email %>
+Password: <%= form.text_field :password %>
+Password Again: <%= form.text_field :password_confirmation %>
+<%= form.submit "Register!" %>
+
+<% end %>
