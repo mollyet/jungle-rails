@@ -6,8 +6,6 @@ RSpec.feature "Visitor navigates to home page", type: :feature, js: true do
   
   before :each do 
     @category = Category.create! name: "Apparel"
-
-    10.times do |n| 
       @category.products.create!(
         name: Faker::Hipster.sentence(3),
         description: Faker::Hipster.paragraph(4),
@@ -15,16 +13,19 @@ RSpec.feature "Visitor navigates to home page", type: :feature, js: true do
         quantity: 10,
         price: 420.69
       )
-    end
   end
-  scenario "They see all products" do
+  scenario "They can add one thing to the cart" do
     # ACT
     visit root_path
-    #click on a product to visit page
-    # click this button 'btn btn-default pull-right'
-    # click_on "btn btn-default pull-right"
-    first("a.btn-default").click
-    expect(page).to have_content("Description")
+    #check if cart is empty
+    expect(page).to have_content("My Cart (0)")
+    #click button to add to cart (add or btn btn-primary)
+    # click_button("Add").first
+    # first("a.btn-primary").click
+    click_button "Add"
+  # find_button("Add").click
+    #check if there is something in the cart
+   expect(page).to have_content("My Cart (1)")
     # DEBUG / VERIFY
     save_screenshot
 
